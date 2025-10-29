@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Modelling – EWCM / RWCM</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+</head>
+<body>
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a class="active" href="code.html">Modelling</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+    <section class="card">
+      <h2>Elastic Water Column Model (EWCM)</h2>
+      <p class="muted">
+        ODE-based formulation for pressurised WDS enabling control-oriented analysis (state-space),
+        modal analysis, and advanced observers (EKF/UKF/SMO/HGO).
+      </p>
+      <div class="grid2">
+        <div>
+          <h3>Highlights</h3>
+          <ul>
+            <li>State-space build from pipe/PRV/pump elements</li>
+            <li>Observers for unknown demands and boundary heads</li>
+            <li>Participation factors identify vulnerable locations</li>
+          </ul>
+          <div style="margin-top:10px;display:flex;gap:10px;flex-wrap:wrap">
+            <a class="btn primary" href="https://github.com/Morteza2400" target="_blank">View GitHub</a>
+            <a class="btn outline" href="assets/EWCM_Overview.pdf" target="_blank">Method Summary (PDF)</a>
+          </div>
+        </div>
+        <div>
+          <pre><code>% Pseudocode (MATLAB) – EWCM state update
+function xdot = f(x,u,p)
+  % x = [q; h]   % flows and heads as states
+  % u = [demands; reservoir heads]
+  % p = network parameters (A,R,L,compressibility,...)
+  q = x(1:nq);     h = x(nq+1:end);
+  % momentum & continuity (ODE-only form)
+  qdot = A\( -R.*q - B*h + Bu*u );
+  hdot = C*q + Du*u;
+  xdot = [qdot; hdot];
+end</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid2">
+      <div class="card">
+        <h2>RWCM + Filters</h2>
+        <p class="muted">Extended/Unscented/Particle filtering pipelines with consistent residuals & MAD thresholds.</p>
+        <pre><code>% EKF structure (MATLAB)
+ekf = extendedKalmanFilter(@f,@h,x0,'StateTransitionJacobianFcn',@F,'MeasurementJacobianFcn',@H);
+for k=1:T
+  ekf.predict(u(:,k));
+  ekf.correct(y(:,k));
+  xhat(:,k) = ekf.State;
+end</code></pre>
+      </div>
+      <div class="card">
+        <h2>Visuals</h2>
+        <p class="muted">Add figures showing resonance peaks, PF heatmaps, and estimation residuals.</p>
+        <img src="img/demo-plot.png" alt="Example plot" style="width:100%;border:1px solid var(--line);border-radius:12px">
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · Modelling</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>

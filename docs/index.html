@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Morteza Imani – Portfolio</title>
+  <link rel="stylesheet" href="css/styles.css"/>
+  <meta name="description" content="Hydraulic modelling & GIS portfolio — EWCM research, GIS dashboards, SQL & analytics."/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 64 64%22><circle cx=%2232%22 cy=%2232%22 r=%2212%22 fill=%22%234f46e5%22/></svg>">
+</head>
+<body>
+  <!-- NAV -->
+  <div class="nav">
+    <div class="container nav-inner">
+      <a class="brand" href="index.html"><span class="dot"></span><strong>Morteza Imani</strong></a>
+      <nav>
+        <a class="active" href="index.html">About</a>
+        <a href="gis.html">GIS Showcase</a>
+        <a href="research.html">Research</a>
+        <a href="code.html">Modelling</a>
+      </nav>
+    </div>
+  </div>
+
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Hydraulic Modelling · GIS · Analytics</h1>
+        <p class="muted">
+          Engineer and PhD candidate focused on <b>transient hydraulics</b> and the
+          <b>Elastic Water Column Model (EWCM)</b>. I build numerical & spatial models,
+          run scenario analyses, and deliver decision-ready insights for water systems planning.
+        </p>
+        <div class="pills" style="margin:12px 0">
+          <span class="pill">Hydraulic Modelling (EWCM/RWCM)</span>
+          <span class="pill">GIS (ArcGIS Enterprise & Leaflet)</span>
+          <span class="pill">SQL & ETL (ArcPy, FME, pyodbc)</span>
+          <span class="pill">Chart.js & D3</span>
+          <span class="pill">Power BI</span>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px">
+          <a class="btn primary" href="gis.html">Open GIS Showcase</a>
+          <a class="btn outline" href="assets/Morteza_Imani_CV.pdf" target="_blank" rel="noopener">Download CV</a>
+          <a class="btn" href="research.html">View Papers</a>
+        </div>
+      </div>
+      <div>
+        <img src="img/profile.jpg" alt="Portrait of Morteza Imani">
+      </div>
+    </section>
+
+    <hr class="sep">
+
+    <section class="grid3">
+      <div class="card">
+        <h2>Highlights</h2>
+        <ul>
+          <li>Researched state estimation & observers for WDS (EWCM / RWCM).</li>
+          <li>Built interactive web maps with live LocationSA services + analytics.</li>
+          <li>Designed ETL pipelines to publish feature classes and dashboards.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Core Skills</h2>
+        <ul>
+          <li>Hydraulic modelling</li>  
+          <li>ArcGIS Enterprise (Portal, Server), SQL Server, Python (ArcPy)</li>
+          <li>Leaflet / Esri-Leaflet, Chart.js, Power BI</li>
+          <li>Kalman/SMO/HGO observers, transient modelling</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:morteza.imani@adelaide.edu.au" style="color:var(--link)">morteza.imani@adelaide.edu.au</a></p>
+        <p>Email: <a href="mailto:imani.mrt@gmail.com" style="color:var(--link)">imani.mrt@gmail.com</a></p>
+        <p>GitHub: <a href="https://github.com/Morteza2400" target="_blank" style="color:var(--link)">Morteza2400</a></p>
+        <p>Location: Adelaide, SA</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="container">© <span id="y"></span> Morteza Imani · Portfolio</footer>
+  <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+</body>
+</html>
